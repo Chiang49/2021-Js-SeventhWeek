@@ -1,0 +1,102 @@
+
+body{
+    padding-top: 120px;
+}
+
+.addChicket{
+    padding: 60px 0px;
+    border-radius: 12px;
+    box-shadow: 0px 3px 6px #00000029;
+    @include mobile{
+        padding: 60px 10px;
+    }
+    @include pad{
+        padding: 60px 20px;
+    }
+}
+
+.addTickTitle{
+
+    font-size: $h4-font-size;
+    font-weight: $font-weight-bold;
+    color: $primary;
+    padding-bottom: 4px;
+    border-bottom: 3px solid $primary;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+
+}
+
+.inputGroup{
+    margin-bottom: 16px;
+   
+    label{
+        color: $primary;
+        font-weight: 600;
+    }
+    input, select, textarea{
+        background: #FAFAFA;
+        border: 2px solid #fff;
+        border-bottom: 2px solid $primary;
+        padding: 8px 12px;
+        margin-bottom: 4px;
+    }
+
+    //輸入格式有誤時使用
+    .messageEr{
+        font-size: 14px;
+        color: red;
+    }
+    .error{
+        border: 2px solid rgb(255, 102, 0);
+    }
+}
+
+.btn{
+    color: #fff;
+    font-size: 20px;
+    padding: 10px 40px;
+    background: #004E4D;
+    border: none;
+    border-radius: 4.8px;
+    &:hover{
+        background: $primary;
+    }
+}
+
+
+.bg-style{
+    background: #F7F7F7;
+    padding: 56px 0px 120px;
+    @include mobile{
+        padding-bottom: 60px;
+    }
+}
+
+.travelCardList{
+    @include mobile{
+        & > li{
+            margin-bottom: 35px;
+        }
+        & > li:last-child{
+            margin-bottom: 0;
+        }
+    }
+    @include pad{
+        & > li:nth-last-child(2){
+            margin-bottom: 0;
+        }
+    }
+    @include desktop{
+        & > li:nth-last-child(3){
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+// c3.style
+.c3-chart-arc text {
+    font-size: 11px;
+}

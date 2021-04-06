@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Load c3.css -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.18/c3.css" rel="stylesheet">
+    <!-- Icons.css -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <!-- 自己的 -->
+    <link rel="stylesheet" href="./css/style/all.css">
+    <title>第五週主線任務</title>
+</head>
+<body>
+    
+    <!-- 新增套票表單區 -->
+   <section class="container mb-25">
+        <div class="row">
+            <div class="offset-lg-1 col-lg-10">
+                <div class="addChicket">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="mb-5 mb-md-0 col-lg-5">
+                            <img  src="./img/undraw_Traveling_re_weve (1)/undraw_Traveling_re_weve (1)@2x.png" alt="Let’s Travel">
+                            <img class="d-none d-lg-block" src="./img/Let’s Travel !/Let’s Travel !@2x.png" alt="Let’s Travel">
+                        </div>
+                        <div class="col-lg-5">
+                            <h2 class="addTickTitle">
+                                <span class="material-icons mr-2">
+                                    add_circle_outline
+                                </span>
+                                新增旅遊套票
+                            </h2>
+                            <form action="#" id="formList">
+                                <div class="inputGroup row no-gutters">
+                                    <label class="col-3" for="ticketName">套票名稱</label>
+                                    <input class="col-9 pl-3 ticketName-Error" type="text" name="ticketName" id="ticketName" placeholder="請填寫套票名稱">
+                                    <p class="offset-3 messageEr ticketName"></p>
+                                </div>
+                                <div class="inputGroup row no-gutters">
+                                    <label class="col-3" for="imgUrl">圖片網址</label>
+                                    <input class="col-9 pl-3 imgUrl-Error" type="text" name="imgUrl" id="imgUrl" placeholder="請填寫圖片網址">
+                                    <p class="offset-3 messageEr imgUrl"></p>
+                                </div>
+                                <div class="inputGroup row no-gutters">
+                                    <label class="col-3" for="area">景點地區</label>
+                                    <select class="col-9 pl-3 text-muted area-Error" name="area" id="area">
+                                        <option value="" disabled selected hidden>請選擇景點地區</option>
+                                        <option value="台北">台北</option>
+                                        <option value="台中">台中</option>
+                                        <option value="高雄">高雄</option>
+                                    </select>
+                                    <p class="offset-3 messageEr area"></p>
+                                </div>
+                                <div class="inputGroup row no-gutters">
+                                    <label class="col-3" for="price">套票金額</label>
+                                    <input class="col-9 pl-3 price-Error" type="number" name="price" id="price" placeholder="請填寫套票金額">
+                                    <p class="offset-3 messageEr price"></p>
+                                </div>
+                                <div class="inputGroup row no-gutters">
+                                    <label class="col-3" for="num">套票組數</label>
+                                    <input class="col-9 pl-3 num-Error" type="number" name="num" id="num" placeholder="請填寫套票組數">
+                                    <p class="offset-3 messageEr num"></p>
+                                </div>
+                                <div class="inputGroup row no-gutters">
+                                    <label class="col-3" for="star">套票星級</label>
+                                    <input class="col-9 pl-3 star-Error" type="number" name="star" id="star" placeholder="請填寫套票星級">
+                                    <p class="offset-3 messageEr star"></p>
+                                </div>
+                                <div class="inputGroup mb-6 row no-gutters">
+                                    <label class="col-3" for="introduce">套票描述</label>
+                                    <textarea class="col-9 pl-3 introduce-Error" name="introduce" id="introduce" cols="30" rows="10" placeholder="請填寫套票描述（限 100 字）"></textarea>
+                                    <p class="offset-3 messageEr introduce"></p>
+                                </div>
+                                <div class="text-right">
+                                    <!-- <button class="btn">新增套票</button> -->
+                                    <input class="btn" type="button" value="新增套票">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </section>
+    
+   <!-- 套票顯示區 -->
+   <section class="bg-style">
+        <div class="container">
+            <!-- 地區搜尋 -->
+            <div class="row align-items-center mb-10">
+                <div class="offset-lg-1 col-lg-3 mb-2 mb-lg-0">
+                    <form action="">
+                        <select class="w-100 py-2 pl-3" name="searchLocation" id="searchArea">
+                            <option value="" disabled selected hidden>地區搜尋</option>
+                            <option value="全部地區">全部地區</option>
+                            <option value="台北">台北</option>
+                            <option value="台中">台中</option>
+                            <option value="高雄">高雄</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="col-lg-2">
+                    <p class="text-third">本次搜尋共 <span id="searchNum">6</span> 筆資料</p>
+                </div>
+                <div class="offset-lg-3 col-lg-2" id="chart"></div>
+            </div>
+            <!-- 套票顯示 -->
+            <ul class="travelCardList row">
+                <li class="col-md-6 col-lg-4">
+                    <a class="travelCard" href="#">
+                        <p class="locationText">台北</p>
+                        <p class="groupScore">8.6</p>
+                        <div class="travelCard-header">
+                            <img class="travelImg" src="./img/photo-1477894387642-00a731c511b3/photo-1477894387642-00a731c511b3@2x.png" alt="綠島自由行套裝行程">
+                        </div>
+                        <div class="travelCard-body">
+                            <h3 class="travelCard-title">綠島自由行套裝行程</h3>
+                            <p class="travelCard-text">
+                                嚴選超高CP值綠島自由行套裝行程，多種綠島套裝組合，提供台東綠島來回船票、綠島環島機車、綠島民宿住宿，行程加贈『綠島浮潛體驗』以及『綠島生態導覽』，讓你用輕鬆的綠島套裝自由行，也能深度認識綠島在地文化。
+                            </p>
+                            <div class="travelCard-footer">
+                                <p>
+                                    <span class="material-icons">
+                                        error
+                                    </span>
+                                    剩下最後 <span id="groupNum">8</span> 組
+                                </p>
+                                <p>TWD<span class="groupPrice">$1,280</span></p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="col-md-6 col-lg-4">
+                    <a class="travelCard" href="#">
+                        <div class="travelCard-header">
+                            <p class="locationText">台北</p>
+                            <img src="./img/photo-1526772662000-3f88f10405ff/photo-1526772662000-3f88f10405ff@2x.png" alt="清境高空觀景步道二日遊">
+                            <p class="groupScore">8.2</p>
+                        </div>
+                        <div class="travelCard-body">
+                            <h3 class="travelCard-title">清境高空觀景步道二日遊</h3>
+                            <p class="travelCard-text">
+                                清境農場青青草原數十公頃碧草，餵食著數以百計的綿羊和牛群，中央山脈最高的北三段群峰形成一堵如帶的高牆，攔住清晨的薄霧山嵐，成就了從花蓮翻山而來的雲瀑在濁水溪谷積成雲海，這些景觀豐沛了清境觀景步道的風格，也涵養它無可取代的特色。
+                            </p>
+                            <div class="travelCard-footer">
+                                <p>
+                                    <span class="material-icons">
+                                        error
+                                    </span>
+                                    剩下最後 <span id="groupNum">12</span> 組
+                                </p>
+                                <p>TWD<span class="groupPrice">$2,580</span></p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="col-md-6 col-lg-4">
+                    <a class="travelCard" href="#">
+                        <div class="travelCard-header">
+                            <p class="locationText">台中</p>
+                            <img src="./img/photo-1598954467835-3b0b6fe3be70/photo-1598954467835-3b0b6fe3be70@2x.png" alt="南庄度假村露營車二日遊">
+                            <p class="groupScore">9.2</p>
+                        </div>
+                        <div class="travelCard-body">
+                            <h3 class="travelCard-title">南庄度假村露營車二日遊</h3>
+                            <p class="travelCard-text">
+                                南庄雲水豪華露營車，快來擁有最愜意的露營體驗吧！ 一泊一食，輕鬆享受露營車樂趣。 獨立衛浴與私人戶外露臺。 入住豪華露營車還能使用戶外SPA大眾湯，感受美人湯魅力。
+                            </p>
+                            <div class="travelCard-footer">
+                                <p>
+                                    <span class="material-icons">
+                                        error
+                                    </span>
+                                    剩下最後 <span id="groupNum">2</span> 組
+                                </p>
+                                <p>TWD<span class="groupPrice">$2,480</span></p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="col-md-6 col-lg-4">
+                    <a class="travelCard" href="#">
+                        <div class="travelCard-header">
+                            <p class="locationText">台中</p>
+                            <img src="./img/photo-1517760444937-f6397edcbbcd/photo-1517760444937-f6397edcbbcd@2x.png" alt="山林悠遊雙人套票">
+                            <p class="groupScore">9.3</p>
+                        </div>
+                        <div class="travelCard-body">
+                            <h3 class="travelCard-title">山林悠遊雙人套票</h3>
+                            <p class="travelCard-text">
+                                山林悠遊套票，結合南投清境高空步道、雙龍瀑布七彩吊橋、瑞龍瀑布園區之熱門景點，帶您飽覽南投瑰麗的自然環境，體驗變化無窮的地形景觀，喜歡挑戰高空的您一定不可錯過。 （含雙龍瀑布入場券 x2）
+                            </p>
+                            <div class="travelCard-footer">
+                                <p>
+                                    <span class="material-icons">
+                                        error
+                                    </span>
+                                    限時搶購
+                                </p>
+                                <p>TWD<span class="groupPrice">$880</span></p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="col-md-6 col-lg-4">
+                    <a class="travelCard" href="#">
+                        <div class="travelCard-header">
+                            <p class="locationText">台中</p>
+                            <img src="./img/photo-1490556505947-f833c3a09659/photo-1490556505947-f833c3a09659@2x.png" alt="漁樂碼頭釣魚體驗套票">
+                            <p class="groupScore">8.2</p>
+                        </div>
+                        <div class="travelCard-body">
+                            <h3 class="travelCard-title">漁樂碼頭釣魚體驗套票</h3>
+                            <p class="travelCard-text">
+                                台中全新親子景點寶熊漁樂碼頭，為知名釣具公司「OKUMA」所創立的觀光工廠。一樓藍白希臘漁村風商店街免費參觀。二樓釣魚故事館則設立全台唯一虛擬釣場，透過導覽讓你知道如何釣魚、魚餌怎麼區分，寓教於樂的台中景點！
+                            </p>
+                            <div class="travelCard-footer">
+                                <p>
+                                    <span class="material-icons">
+                                        error
+                                    </span>
+                                    剩下最後 <span id="groupNum">5</span> 組
+                                </p>
+                                <p>TWD<span class="groupPrice">$1,280</span></p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li class="col-md-6 col-lg-4">
+                    <a class="travelCard" href="#">
+                        <div class="travelCard-header">
+                            <p class="locationText">高雄</p>
+                            <img src="./img/photo-1535726858289-9ffe2dff6f52/photo-1535726858289-9ffe2dff6f52@2x.png" alt="熊森公園親子二日遊套票">
+                            <p class="groupScore">8.6</p>
+                        </div>
+                        <div class="travelCard-body">
+                            <h3 class="travelCard-title">熊森公園親子二日遊套票</h3>
+                            <p class="travelCard-text">
+                                來自日本最受歡迎的兒童遊樂園《 BearSon Park 熊森公園》於全世界有800多家據點，在全世界、日本及台灣，很多小孩的童年都在遊戲愛樂園裡一同成長，提供兒童一個最富教育性及娛樂性的休憩遊樂天地！
+                            </p>
+                            <div class="travelCard-footer">
+                                <p>
+                                    <span class="material-icons">
+                                        error
+                                    </span>
+                                    剩下最後 <span id="groupNum">3</span> 組
+                                </p>
+                                <p>TWD<span class="groupPrice">$2,480</span></p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+   </section>
+
+
+    <!-- validate.js -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
+    <!-- Load d3.js and c3.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.18/c3.js"></script>
+    <!-- axios套件Js -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- 自己的Js -->
+    <script src="./js/all.js"></script>
+</body>
+</html>

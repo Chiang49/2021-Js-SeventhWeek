@@ -1,0 +1,67 @@
+
+.travelCard{
+    background: #fff;
+    border: 1px solid #DEE2E6;
+    border-radius: 4px;
+    box-shadow: 0px 3px 6px #00000029;
+    position: relative;
+    &:hover{
+        box-shadow: 0px 0px 10px #aaa;
+        transition: 0.8s;
+    }
+    &-header{
+        height: 180px;
+        // position: relative;
+        overflow: hidden;
+    }
+    .locationText{
+        display: inline-block;
+        color: #fff;
+        background: $secondary;
+        padding: 8px 20px;
+        position: absolute;
+        top:-10px;
+    }
+    .groupScore{
+        display: inline-block;
+        color: #fff;
+        background: $primary;
+        padding: 5px 8px;
+        position: absolute;
+        top: 160px;
+    }
+    &-body{
+        padding: 20px 20px 14px 20px;
+    }
+    &-title{
+        font-size: 24px;
+        color: $primary;
+        padding-bottom: 4px;
+        border-bottom: 2px solid #007572;
+        margin-bottom: 16px;
+    }
+    &-text{
+        height: 144px;
+        color: $third;
+        text-align: justify;
+        margin-bottom: 22px;
+    }
+    &-footer{
+        color: $primary;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        p{
+            display: flex;
+            align-items: center;
+        }
+        .material-icons{
+            font-size: 20px;
+            margin-right: 6px;
+        }
+        .groupPrice{
+            font-size: 32px;
+            margin-left: 4px;
+        }
+    }
+}
