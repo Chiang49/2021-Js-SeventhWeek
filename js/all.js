@@ -100,12 +100,12 @@ function showSelect(mode){
 function checkForm(){
 
     const constraints = {
-        ticketName: {
+        "套票名稱": {
             presence: {
                 message: "必填!"
             }
         },
-        imgUrl: {
+        "圖片網址": {
             presence: {
                 message: "必填!"
             },
@@ -114,12 +114,12 @@ function checkForm(){
                 message: "格式錯誤"
             }
         },
-        area: {
+        "景點地區": {
             presence: {
                 message: "必填!"
             }
         },
-        price: {
+        "套票金額": {
             presence: {
                 message: "必填!"
             },
@@ -128,7 +128,7 @@ function checkForm(){
                 message: "金額必須大於0!"
             }
         },
-        num: {
+        "套票組數": {
             presence: {
                 message: "必填!"
             },
@@ -137,17 +137,17 @@ function checkForm(){
                 message: "套票數量必須大於0!"
             }
         },
-        star: {
+        "套票星級": {
             presence: {
                 message: "必填!"
             },
             numericality: {
-                greaterThanOrEqualTo: 0,
+                greaterThanOrEqualTo: 1,
                 lessThanOrEqualTo: 10,
                 message: "星級必須大於0小於11!"
             }
         },
-        introduce: {
+        "套票描述": {
             presence: {
                 message: "必填!"
             },
@@ -165,6 +165,7 @@ function checkForm(){
     })
 
     let error = validate(formList, constraints);
+    
     let isError = false;
 
     if(error){
@@ -172,8 +173,11 @@ function checkForm(){
         isError = true;
         Object.keys(error).forEach(function(key){
             
-            document.querySelector(`.${key}`).textContent = error[key];
-            document.querySelector(`.${key}-Error`).classList.add('error');
+            let errorMessage =  document.getElementsByName(key);
+            
+            errorMessage[0].classList.add('error');
+            errorMessage[0].nextElementSibling.textContent = error[key];
+
 
         })
         
@@ -187,7 +191,7 @@ function checkForm(){
 //輸入和點擊input就檢查--------------------
 formNull.forEach(function(item){
 
-    item.addEventListener('change',function(e){
+    item.addEventListener('blur',function(e){
 
         checkForm();
 
@@ -247,10 +251,23 @@ function newAreaData(){
         bindto: '#chart',
         data: {
           columns: c3_AreaAry,
-          type: 'donut'
+          type: 'donut',
+          colors:{
+            台北:"#37547C",
+            台中:"#67769F", 
+            高雄:"#CCBAC9"
+          }
         },
         donut: {
-            title: "套票地區比重"
+            title: "套票地區比重",
+            label:{
+                show: false
+            },
+            width: 25,
+            size:{
+                height: 160,
+                weight: 160
+            }
         }
         
     });
@@ -266,7 +283,7 @@ submitBtn.addEventListener('click',function(e){
     let formIsError = checkForm();
 
     //檢查條件都false才能新增
-    if(formIsError == false){
+    if(!formIsError){
         data.push({
             id : data.length,
             name : ticketName.value,
